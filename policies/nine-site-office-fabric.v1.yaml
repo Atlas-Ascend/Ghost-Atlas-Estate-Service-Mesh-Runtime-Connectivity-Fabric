@@ -1,8 +1,9 @@
-version: "1.0.0"
+version: "1.0.1"
 id: nine-site-office-fabric
 service_identity: ghost-atlas-office-web
 repository: Atlas-Ascend/nextjs-boilerplate
 runtime_authority: Atlas-Ascend/Eden-2.0/office_fabric
+identity_authority: Atlas-Ascend/Eden-2.0/office_fabric/public_estate_registry.py
 protocols: [https, internal-rest, estate-event]
 required_headers:
   response:
@@ -10,40 +11,40 @@ required_headers:
     - X-Ghost-Atlas-Fabric
 host_routes:
   ghostatlasempire.com:
-    site_id: SITE-EMPIRE
+    site_id: WDP-000
     office_id: OFFICE-EMPIRE-VISION
     app_route: /surface/empire
   ghostatlasestate.com:
-    site_id: SITE-ESTATE
+    site_id: WDP-001
     office_id: OFFICE-ESTATE-PUBLIC-IO
     app_route: /surface/estate
   atlasmind.global:
-    site_id: SITE-ATLAS-MIND
+    site_id: WDP-002
     office_id: OFFICE-ATLAS-MIND-PRODUCT
     app_route: /surface/atlas-mind
   alteredstate.cloud:
-    site_id: SITE-ALTERED-STATE
-    office_id: OFFICE-ALTERED-STATE-OBSERVATORY
+    site_id: WDP-003
+    office_id: OFFICE-ALTERED-STATE
     app_route: /surface/altered-state
   ghostatlasinstitute.org:
-    site_id: SITE-INSTITUTE
-    office_id: OFFICE-INSTITUTE-RESEARCH
+    site_id: WDP-004
+    office_id: OFFICE-INSTITUTE
     app_route: /surface/institute
   ghostatlasconsulting.com:
-    site_id: SITE-CONSULTING
-    office_id: OFFICE-CONSULTING-COMMERCIAL
+    site_id: WDP-005
+    office_id: OFFICE-CONSULTING
     app_route: /surface/consulting
   atlasautomatedsystems.com:
-    site_id: SITE-AUTOMATED-SYSTEMS
-    office_id: OFFICE-AUTOMATED-SYSTEMS-DEPLOYMENT
+    site_id: WDP-006
+    office_id: OFFICE-AUTOMATED-SYSTEMS
     app_route: /surface/automated-systems
   globalascension.online:
-    site_id: SITE-GLOBAL-ASCENSION
-    office_id: OFFICE-GLOBAL-ASCENSION-PUBLIC-BENEFIT
+    site_id: WDP-007
+    office_id: OFFICE-GLOBAL-ASCENSION
     app_route: /surface/global-ascension
   ghostatlasos.shop:
-    site_id: SITE-GHOST-ATLAS-OS
-    office_id: OFFICE-GHOST-ATLAS-OS-DISTRIBUTION
+    site_id: WDP-008
+    office_id: OFFICE-GHOST-ATLAS-OS
     app_route: /surface/ghost-atlas-os
 upstream_capabilities:
   event_gateway: ghost-atlas-estate-event-gateway
