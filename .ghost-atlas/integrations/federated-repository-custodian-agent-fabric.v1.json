@@ -1,0 +1,10 @@
+{
+  "schema":"ga.farc.integration.v1",
+  "fabric":"Atlas-Ascend/Federated-Autonomous-Repository-Custodian-Agent-Fabric",
+  "campaign":"GA-FARC-AUTONOMOUS-CUSTODIAN-CONVERGENCE-001",
+  "hostRole":"runtime-connectivity-and-service-resolution",
+  "serviceIdentity":"federated-repository-custodian-agent-fabric",
+  "connects":["workforce-spine","execution-fabric","software-factory","event-gateway","runtime-observatory","eden"],
+  "rule":"Connectivity does not imply authorization; JANUS and registered capability boundaries remain mandatory.",
+  "truth":"DECLARED_SERVICE_MESH_EDGE"
+}
