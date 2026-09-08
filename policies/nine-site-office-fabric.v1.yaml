@@ -1,0 +1,62 @@
+version: "1.0.0"
+id: nine-site-office-fabric
+service_identity: ghost-atlas-office-web
+repository: Atlas-Ascend/nextjs-boilerplate
+runtime_authority: Atlas-Ascend/Eden-2.0/office_fabric
+protocols: [https, internal-rest, estate-event]
+required_headers:
+  response:
+    - X-Ghost-Atlas-Site
+    - X-Ghost-Atlas-Fabric
+host_routes:
+  ghostatlasempire.com:
+    site_id: SITE-EMPIRE
+    office_id: OFFICE-EMPIRE-VISION
+    app_route: /surface/empire
+  ghostatlasestate.com:
+    site_id: SITE-ESTATE
+    office_id: OFFICE-ESTATE-PUBLIC-IO
+    app_route: /surface/estate
+  atlasmind.global:
+    site_id: SITE-ATLAS-MIND
+    office_id: OFFICE-ATLAS-MIND-PRODUCT
+    app_route: /surface/atlas-mind
+  alteredstate.cloud:
+    site_id: SITE-ALTERED-STATE
+    office_id: OFFICE-ALTERED-STATE-OBSERVATORY
+    app_route: /surface/altered-state
+  ghostatlasinstitute.org:
+    site_id: SITE-INSTITUTE
+    office_id: OFFICE-INSTITUTE-RESEARCH
+    app_route: /surface/institute
+  ghostatlasconsulting.com:
+    site_id: SITE-CONSULTING
+    office_id: OFFICE-CONSULTING-COMMERCIAL
+    app_route: /surface/consulting
+  atlasautomatedsystems.com:
+    site_id: SITE-AUTOMATED-SYSTEMS
+    office_id: OFFICE-AUTOMATED-SYSTEMS-DEPLOYMENT
+    app_route: /surface/automated-systems
+  globalascension.online:
+    site_id: SITE-GLOBAL-ASCENSION
+    office_id: OFFICE-GLOBAL-ASCENSION-PUBLIC-BENEFIT
+    app_route: /surface/global-ascension
+  ghostatlasos.shop:
+    site_id: SITE-GHOST-ATLAS-OS
+    office_id: OFFICE-GHOST-ATLAS-OS-DISTRIBUTION
+    app_route: /surface/ghost-atlas-os
+upstream_capabilities:
+  event_gateway: ghost-atlas-estate-event-gateway
+  work_dispatch: workforce-spine
+  release: ghost-atlas-release-deployment-control-plane
+  observability: ghost-atlas-runtime-observatory
+  service_discovery: estate-service-catalog
+  memory: thoth-archive-engine
+policies:
+  site_context_required: true
+  cross_site_write_default: deny
+  private_to_public_egress: deny
+  unknown_host: deny
+  preserve_correlation: true
+  health_required_before_promotion: true
+  repository_proof_is_runtime_proof: false
