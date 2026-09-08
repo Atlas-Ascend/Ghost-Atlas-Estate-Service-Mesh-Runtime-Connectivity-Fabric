@@ -6,11 +6,12 @@
   "additionalProperties": false,
   "required": ["siteId", "officeId", "domain", "appRoute", "serviceIdentity"],
   "properties": {
-    "siteId": { "type": "string", "pattern": "^SITE-[A-Z0-9-]+$" },
+    "siteId": { "type": "string", "pattern": "^WDP-[0-9]{3}$" },
     "officeId": { "type": "string", "pattern": "^OFFICE-[A-Z0-9-]+$" },
     "domain": { "type": "string", "minLength": 3 },
     "appRoute": { "type": "string", "pattern": "^/" },
     "serviceIdentity": { "const": "ghost-atlas-office-web" },
+    "identityAuthority": { "const": "Atlas-Ascend/Eden-2.0/office_fabric/public_estate_registry.py" },
     "environment": { "type": "string", "enum": ["preview", "production"] },
     "health": { "type": "string" },
     "correlationId": { "type": "string" }
