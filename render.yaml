@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: ghost-atlas-estate-service-mesh
+    runtime: docker
+    healthCheckPath: /health
+    envVars:
+      - key: GA_SERVICE_REGISTRY_URL
+        sync: false
+      - key: GA_EVENT_GATEWAY_URL
+        sync: false
+      - key: GA_MESH_SHARED_SECRET
+        sync: false
+      - key: GA_MESH_CALLER_SERVICE
+        value: estate.service-mesh
+      - key: GA_MESH_MAX_CAPTURE_BYTES
+        value: "65536"
