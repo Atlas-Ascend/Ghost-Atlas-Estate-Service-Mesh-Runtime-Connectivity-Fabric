@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ghostatlas.local/schemas/office-site-route.schema.json",
+  "title": "Ghost Atlas Office Site Route",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["siteId", "officeId", "domain", "appRoute", "serviceIdentity"],
+  "properties": {
+    "siteId": { "type": "string", "pattern": "^SITE-[A-Z0-9-]+$" },
+    "officeId": { "type": "string", "pattern": "^OFFICE-[A-Z0-9-]+$" },
+    "domain": { "type": "string", "minLength": 3 },
+    "appRoute": { "type": "string", "pattern": "^/" },
+    "serviceIdentity": { "const": "ghost-atlas-office-web" },
+    "environment": { "type": "string", "enum": ["preview", "production"] },
+    "health": { "type": "string" },
+    "correlationId": { "type": "string" }
+  }
+}
