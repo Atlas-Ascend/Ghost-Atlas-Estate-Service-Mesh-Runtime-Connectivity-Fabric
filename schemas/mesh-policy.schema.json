@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ghostatlas.local/schemas/mesh-policy.schema.json",
+  "title": "Ghost Atlas Mesh Policy",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "timeout_ms": { "type": "integer", "minimum": 100, "maximum": 30000, "default": 5000 },
+    "retries": { "type": "integer", "minimum": 0, "maximum": 5, "default": 2 },
+    "circuit_failure_threshold": { "type": "integer", "minimum": 1, "maximum": 20, "default": 3 },
+    "recovery_seconds": { "type": "integer", "minimum": 1, "maximum": 300, "default": 30 },
+    "allow_degraded": { "type": "boolean", "default": false }
+  }
+}
