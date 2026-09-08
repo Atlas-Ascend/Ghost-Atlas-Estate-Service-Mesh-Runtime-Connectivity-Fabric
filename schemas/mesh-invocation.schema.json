@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ghostatlas.local/schemas/mesh-invocation.schema.json",
+  "title": "Ghost Atlas Mesh Invocation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["capability_id"],
+  "properties": {
+    "capability_id": { "type": "string", "minLength": 1 },
+    "environment": { "type": "string", "minLength": 1, "default": "production" },
+    "method": { "type": "string", "enum": ["GET", "POST", "PUT", "PATCH", "DELETE"], "default": "POST" },
+    "path": { "type": "string", "default": "" },
+    "query": { "type": "object", "additionalProperties": { "type": "string" } },
+    "headers": { "type": "object", "additionalProperties": { "type": "string" } },
+    "body": {},
+    "caller_service": { "type": "string", "minLength": 1, "default": "estate.mesh" },
+    "correlation_id": { "type": ["string", "null"] }
+  }
+}
