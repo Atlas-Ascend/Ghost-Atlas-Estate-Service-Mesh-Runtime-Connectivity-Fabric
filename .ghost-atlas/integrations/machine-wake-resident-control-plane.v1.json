@@ -1,0 +1,7 @@
+{
+  "schema":"ga.service-mesh.machine-wake.v1",
+  "machineWake":"Atlas-Ascend/Ghost-Atlas-Machine-Wake-Resident-Control-Plane",
+  "routes":["machine.wake.evaluate → execution-fabric","wake evidence → event-gateway","wake remediation → workforce-spine/vishvarupa/eden","wake proof → proofgrid/thoth","wake state → observatory/command-center"],
+  "authorityBoundary":"routing does not grant authorization",
+  "passBoundary":"service reachability does not imply AWAKE"
+}
