@@ -1,0 +1,8 @@
+schema: ghost-atlas.hypernet.node/v1
+repository: Atlas-Ascend/Ghost-Atlas-Estate-Service-Mesh-Runtime-Connectivity-Fabric
+lifecycle: active
+plane: runtime-transport
+role: canonical-east-west-service-mesh-and-invocation-gateway
+hypernets: [github, render, eden, hardware, software, cloud]
+authority: transport-only
+routing: {authorization: Janus-Prime, io: Crowngrid, discovery: Estate-Service-Catalog-Capability-Registry, events: Ghost-Atlas-Estate-Event-Gateway, observability: Ghost-Atlas-Runtime-Observatory, quality: SECA, development_repair: DEVOS}
