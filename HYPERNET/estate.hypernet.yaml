@@ -1,0 +1,102 @@
+schema: ghost-atlas.hypernet.estate/v1
+estate: Ghost-Atlas
+owner: Atlas-Ascend
+observed_at: 2026-09-09
+repository_count: 71
+laws:
+  - no-replacement-builds
+  - patch-route-preserve-verify-promote
+  - no-authority-by-connectivity
+  - no-promotion-without-seca-proof
+planes:
+  github: source-contracts-ci-proof
+  render: api-worker-resident-runtime
+  vercel: public-ui-edge
+  neon: relational-state
+  eden: local-sovereign-runtime
+  hardware: physical-capability-nodes
+routing:
+  authorization: Janus-Prime
+  governance_contract: Janus-Odin
+  io_router: Crowngrid
+  discovery: Estate-Service-Catalog-Capability-Registry
+  transport: Ghost-Atlas-Estate-Service-Mesh-Runtime-Connectivity-Fabric
+  events: Ghost-Atlas-Estate-Event-Gateway
+  observability: Ghost-Atlas-Runtime-Observatory
+  verification: SECA
+  development_assistant: DEVOS
+  work_substrate: Packet-OS
+  workforce: workforce-spine
+  cognition: Atlas-Mind-LLM
+nodes:
+  - {repo: PROMETHEUS-AIS-V-1.1.1, state: lineage, plane: resident-evolution}
+  - {repo: -Autonomous-Self-Reconciling-Software-Factory-Estate-Control-Plane, state: active, plane: factory}
+  - {repo: Ghost-Atlas-Software-Factory-End-to-End-SDLC-Control-Plane, state: active, plane: factory}
+  - {repo: serpents-spine, state: lineage, plane: workflow-transport}
+  - {repo: GARI-, state: active, plane: research-evidence}
+  - {repo: Ghost-Atlas-Release-Deployment-Control-Plane, state: active, plane: deployment}
+  - {repo: thoth-archive-engine, state: active, plane: memory}
+  - {repo: Atlas-Ascend-JANUS-10-Grand-Challenge, state: product, plane: challenge-proof}
+  - {repo: Crowngrid, state: seed, plane: io-routing}
+  - {repo: WOOK, state: product, plane: public-creative}
+  - {repo: Ghost-Atlas-Estate-Service-Mesh-Runtime-Connectivity-Fabric, state: active, plane: runtime-transport}
+  - {repo: HESTIA-Hearth-Agentic-Control-Plane, state: active, plane: agentic-application}
+  - {repo: Atlas-Company-9, state: seed, plane: organization}
+  - {repo: Prometheus-1.1.2, state: lineage, plane: resident-evolution}
+  - {repo: Ghost-Atlas-Control-Plane, state: active, plane: governance-orchestration}
+  - {repo: HERMES-Public-Access-Relay, state: active, plane: public-ingress-egress}
+  - {repo: ARGUS-FieldVision, state: active, plane: field-sensing}
+  - {repo: SerpentsSpine, state: lineage, plane: workflow-transport}
+  - {repo: -PROMETHEUS-AIS-Competition, state: product, plane: challenge-proof}
+  - {repo: ARTEMIS-Local-Sovereign-AI, state: active, plane: local-ai}
+  - {repo: SECA, state: seed, plane: verification}
+  - {repo: Medusa---Operations-Runtime-Design-Repo-Build-Truth-, state: lineage, plane: security-design}
+  - {repo: nextjs, state: support, plane: frontend}
+  - {repo: Ghost-Atlas-Map-of-Reality, state: active, plane: knowledge-visualization}
+  - {repo: workforce-spine, state: active, plane: workforce}
+  - {repo: walking-until-the-machine-wakes-up, state: product, plane: field-campaign}
+  - {repo: HEIMDALL-Machine-Governor, state: active, plane: runtime-governance}
+  - {repo: Cipher-9.9, state: seed, plane: cognition}
+  - {repo: nextjs-boilerplate, state: support, plane: frontend}
+  - {repo: nextjs-ai-chatbot, state: support, plane: frontend-ai-ux}
+  - {repo: JANUS-Human-Admin-Zero, state: active, plane: human-administration}
+  - {repo: ATHENA-AI-Infrastructure-Command-Plane, state: active, plane: infrastructure}
+  - {repo: MythOS, state: seed, plane: cognition}
+  - {repo: GA-ATLAS-NATIVE-FOUNDRY, state: active, plane: factory}
+  - {repo: Janus-Odin, state: seed, plane: governance}
+  - {repo: Atlas-Mind-LLM, state: seed, plane: cognition}
+  - {repo: Hypernet-GMII-Unified-Operating-Model, state: active, plane: meta-architecture}
+  - {repo: Eden-AI-Emerald-Tablet-OS-, state: active, plane: cognitive-os}
+  - {repo: Medusa-Sovereign-Security, state: lineage, plane: security}
+  - {repo: VULCAN-Agentic-Engineering-Foundry, state: active, plane: factory}
+  - {repo: Ghost-Atlas-Estate-Event-Gateway, state: active, plane: events}
+  - {repo: Atlas-Company-9-Factory, state: active, plane: factory-company}
+  - {repo: Ghost-Atlas-Machine-Wake-Resident-Control-Plane, state: active, plane: resident-runtime}
+  - {repo: Atlas-Omega, state: active, plane: cognition-architecture}
+  - {repo: Estate-Service-Catalog-Capability-Registry, state: active, plane: discovery}
+  - {repo: DEVOS, state: seed, plane: development-assistance}
+  - {repo: Obsidian-Vault, state: active, plane: memory-knowledge}
+  - {repo: Discord-AIS-Ready-, state: active, plane: community-interface}
+  - {repo: APOLLO-Studio-Operations-Intelligence, state: active, plane: operations-application}
+  - {repo: RHSIE-3.3, state: seed, plane: cognition}
+  - {repo: Ghost-Atlas-Command-Center, state: active, plane: operator-interface}
+  - {repo: EXECUTION-FABRIC-LIVE-OPERATIONS-THEATER, state: active, plane: runtime-workforce}
+  - {repo: Eden-AGI, state: active, plane: cognition}
+  - {repo: chatgpt-export-cognitive-map, state: active, plane: memory-ingestion}
+  - {repo: Ghost-Atlas-Runtime-Observatory, state: active, plane: observability}
+  - {repo: Ghost-Atlas-HQ, state: seed, plane: organization}
+  - {repo: Packet-OS, state: seed, plane: work-substrate}
+  - {repo: Resident-Agentic-Runtime-Doctrine, state: seed, plane: governance-doctrine}
+  - {repo: Phantom_Engine-V-0.1, state: active, plane: experimental-engine}
+  - {repo: MAAT-Universal-CaseGraph, state: active, plane: casegraph-reasoning}
+  - {repo: Ghost-Atlas-Distributed-Agentic-Organism, state: active, plane: organism-workforce}
+  - {repo: walking-machine-control-plane, state: active, plane: field-control}
+  - {repo: Janus-Prime, state: active, plane: governance}
+  - {repo: Eden-2.0, state: active, plane: local-runtime-convergence}
+  - {repo: Ghost-Atlas-OS, state: active, plane: operating-system}
+  - {repo: SAMI, state: seed, plane: administration}
+  - {repo: MVP-Workforce-WarMachine, state: active, plane: workforce-lineage}
+  - {repo: Mothership, state: product, plane: public-application-delivery}
+  - {repo: Federated-Autonomous-Repository-Custodian-Agent-Fabric, state: active, plane: github-custodianship}
+  - {repo: PROMETHEUS-V-1.1.1, state: lineage, plane: resident-evolution}
+  - {repo: VISHVARUPA-Software-Hardware-Organism, state: active, plane: organism-hardware-software}
