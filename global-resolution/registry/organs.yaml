@@ -1,0 +1,32 @@
+schema_version: 1
+resolution_id: GA-HYPERNET-GLOBAL-RESOLUTION-001
+organs:
+  - {canonical_id: ga://organ/janus-prime, role: executive-authority, owns: [command.authorize, decision.issue]}
+  - {canonical_id: ga://organ/atlas-mind, role: cognition, owns: [reasoning.execute, context.synthesize]}
+  - {canonical_id: ga://organ/eden-agi, role: cognition-synthesis, owns: [reasoning.execute, estate.synthesize]}
+  - {canonical_id: ga://organ/thoth, role: memory-cortex, owns: [memory.persist, provenance.resolve, archive.restore]}
+  - {canonical_id: ga://organ/maat, role: casegraph-world-model, owns: [casegraph.resolve, relationship.map]}
+  - {canonical_id: ga://organ/packet-os, role: atomic-work-substrate, owns: [packet.create, packet.state, packet.route]}
+  - {canonical_id: ga://organ/workforce-spine, role: execution-bus, owns: [worker.resolve, work.dispatch]}
+  - {canonical_id: ga://organ/gari, role: research-engine, owns: [research.execute, hypothesis.design]}
+  - {canonical_id: ga://organ/prometheus, role: resident-execution, owns: [work.execute, campaign.run]}
+  - {canonical_id: ga://organ/metaforge, role: software-build-factory, owns: [software.design, software.build]}
+  - {canonical_id: ga://organ/vulcan, role: engineering-foundry, owns: [engineering.execute, scaffold.generate]}
+  - {canonical_id: ga://organ/crowngrid, role: global-route-resolver, owns: [route.resolve, capability.resolve, runtime.resolve]}
+  - {canonical_id: ga://organ/hypernet, role: transport-fabric, owns: [transport.resolve, node.connect]}
+  - {canonical_id: ga://organ/vishvarupa, role: software-hardware-runtime-body, owns: [runtime.place, node.unify]}
+  - {canonical_id: ga://organ/eden, role: sovereign-local-runtime, owns: [compute.execute, model.infer, service.host]}
+  - {canonical_id: ga://organ/medusa, role: security-public-private-review, owns: [policy.evaluate, publication.classify]}
+  - {canonical_id: ga://organ/heimdall, role: machine-governor, owns: [machine.govern, risk.bound]}
+  - {canonical_id: ga://organ/seca, role: verification, owns: [artifact.verify, execution.verify]}
+  - {canonical_id: ga://organ/devos, role: release-truth, owns: [release.verify, deployment.authorize]}
+  - {canonical_id: ga://organ/proofgrid, role: proof-fabric, owns: [receipt.issue, evidence.bind]}
+  - {canonical_id: ga://organ/estate-event-gateway, role: event-backbone, owns: [event.publish, event.subscribe]}
+  - {canonical_id: ga://organ/runtime-observatory, role: observability, owns: [state.observe, telemetry.aggregate]}
+  - {canonical_id: ga://organ/command-center, role: operator-perception, owns: [estate.display, command.capture]}
+  - {canonical_id: ga://organ/hermes, role: public-access-relay, owns: [public.ingress, public.egress]}
+  - {canonical_id: ga://organ/argus, role: field-vision, owns: [field.capture, field.observe]}
+  - {canonical_id: ga://organ/roadbridge, role: field-ingestion, owns: [field.ingest, field.route]}
+  - {canonical_id: ga://organ/serverforge, role: discord-nervous-system, owns: [community.route, discord.operate]}
+  - {canonical_id: ga://organ/audience-forge, role: commercialization, owns: [audience.route, offer.publish]}
+  - {canonical_id: ga://organ/content-engine, role: public-proof-content, owns: [content.generate, publication.route]}

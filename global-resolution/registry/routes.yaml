@@ -1,0 +1,80 @@
+schema_version: 1
+resolution_id: GA-HYPERNET-GLOBAL-RESOLUTION-001
+route_precedence:
+  - authority
+  - security
+  - capability
+  - runtime
+  - resource
+  - transport
+  - proof
+routes:
+  - canonical_id: ga://route/intent-to-packet
+    source: ga://organ/janus-prime
+    accepts: [INTENT, QUERY]
+    path: [ga://organ/janus-prime, ga://organ/maat, ga://organ/packet-os]
+    terminal: packet-created
+    proof: ga://organ/proofgrid
+  - canonical_id: ga://route/packet-to-execution
+    source: ga://organ/packet-os
+    accepts: [PACKET]
+    path: [ga://organ/packet-os, ga://organ/workforce-spine, ga://organ/crowngrid, ga://organ/hypernet]
+    terminal: execution-dispatched
+    proof: ga://organ/proofgrid
+  - canonical_id: ga://route/software-build
+    source: ga://organ/workforce-spine
+    accepts: [PACKET]
+    capability: ga://capability/software.build
+    path: [ga://organ/workforce-spine, ga://organ/metaforge, ga://organ/seca, ga://organ/devos, ga://organ/proofgrid, ga://organ/thoth]
+    terminal: verified-artifact
+    fallback: ga://organ/vulcan
+  - canonical_id: ga://route/research
+    source: ga://organ/janus-prime
+    accepts: [QUERY, PACKET]
+    capability: ga://capability/research.execute
+    path: [ga://organ/gari, ga://organ/seca, ga://organ/proofgrid, ga://organ/thoth]
+    terminal: verified-research
+  - canonical_id: ga://route/model-inference
+    source: ga://organ/atlas-mind
+    accepts: [QUERY, PACKET]
+    capability: ga://capability/model.infer
+    path: [ga://organ/crowngrid, ga://organ/hypernet]
+    runtime_preference: [ga://node/eden, ga://node/t5810-01, ga://node/t5810-02, ga://node/render]
+    terminal: inference-result
+  - canonical_id: ga://route/deploy-public
+    source: ga://organ/devos
+    accepts: [DEPLOYMENT, ARTIFACT]
+    capability: ga://capability/deployment.authorize
+    path: [ga://organ/medusa, ga://organ/devos, ga://organ/crowngrid, ga://organ/proofgrid, ga://organ/thoth]
+    runtime_preference: [ga://node/vercel, ga://node/render]
+    terminal: deployment-live
+  - canonical_id: ga://route/deploy-private-worker
+    source: ga://organ/devos
+    accepts: [DEPLOYMENT, ARTIFACT]
+    path: [ga://organ/medusa, ga://organ/devos, ga://organ/crowngrid, ga://node/render, ga://organ/proofgrid, ga://organ/thoth]
+    terminal: worker-live
+  - canonical_id: ga://route/public-ingress
+    source: ga://organ/hermes
+    accepts: [INTENT, QUERY, COMMAND]
+    path: [ga://organ/hermes, ga://organ/medusa, ga://organ/janus-prime, ga://organ/maat, ga://organ/packet-os]
+    terminal: governed-packet
+  - canonical_id: ga://route/field-ingress
+    source: ga://organ/roadbridge
+    accepts: [EVENT, ARTIFACT, SIGNAL]
+    path: [ga://organ/argus, ga://organ/roadbridge, ga://organ/crowngrid, ga://organ/thoth, ga://organ/maat, ga://organ/proofgrid]
+    terminal: field-state-ingested
+  - canonical_id: ga://route/event-fanout
+    source: ga://organ/estate-event-gateway
+    accepts: [EVENT, STATE, SIGNAL, FAILURE]
+    path: [ga://organ/runtime-observatory, ga://organ/proofgrid, ga://organ/thoth, ga://organ/janus-prime]
+    terminal: state-reconciled
+  - canonical_id: ga://route/verification-loop
+    source: ga://organ/seca
+    accepts: [ARTIFACT, RECEIPT, EVIDENCE]
+    path: [ga://organ/seca, ga://organ/devos, ga://organ/proofgrid, ga://organ/thoth, ga://organ/janus-prime]
+    terminal: canonical-state-updated
+  - canonical_id: ga://route/failure-repair-loop
+    source: ga://organ/estate-event-gateway
+    accepts: [FAILURE]
+    path: [ga://organ/medusa, ga://organ/janus-prime, ga://organ/packet-os, ga://organ/workforce-spine, ga://organ/seca, ga://organ/proofgrid]
+    terminal: repaired-or-escalated
