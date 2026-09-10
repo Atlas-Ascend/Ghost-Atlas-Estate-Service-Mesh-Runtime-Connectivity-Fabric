@@ -1,0 +1,38 @@
+name: Hypernet Industry Conformance
+
+on:
+  pull_request:
+    paths:
+      - 'global-resolution/**'
+      - 'app/**'
+      - '.github/workflows/hypernet-conformance.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'global-resolution/**'
+      - 'app/**'
+
+permissions:
+  contents: read
+
+jobs:
+  certify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install certification dependency
+        run: python -m pip install --disable-pip-version-check PyYAML==6.0.2
+      - name: Run 82-office conformance certification
+        run: python global-resolution/conformance/certify.py
+      - name: Upload certification report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hypernet-conformance-report
+          path: global-resolution/conformance/certification-report.json
+          if-no-files-found: error
+          retention-days: 30

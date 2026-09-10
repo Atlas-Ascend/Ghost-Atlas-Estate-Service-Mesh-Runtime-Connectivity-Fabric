@@ -1,0 +1,118 @@
+schema_version: 1
+resolution_id: GA-HYPERNET-GLOBAL-RESOLUTION-010
+name: Industry Conformance Controls
+scope:
+  offices: 82
+  chatbots: 82
+  agent_roles: 82
+statuses: [PASS, PARTIAL, FAIL, NOT_APPLICABLE]
+controls:
+  - id: ID-01
+    domain: identity
+    name: workload_identity
+    severity: critical
+    evidence: [service_identity, signed_token_or_mtls]
+  - id: ID-02
+    domain: identity
+    name: capability_scoped_rbac
+    severity: critical
+    evidence: [role_binding, capability_allowlist]
+  - id: API-01
+    domain: api
+    name: versioned_typed_contract
+    severity: high
+    evidence: [versioned_endpoint, schema]
+  - id: API-02
+    domain: api
+    name: idempotent_mutation
+    severity: high
+    evidence: [idempotency_key, replay_test]
+  - id: REL-01
+    domain: reliability
+    name: bounded_retries
+    severity: high
+    evidence: [retry_policy, max_attempts]
+  - id: REL-02
+    domain: reliability
+    name: dead_letter_path
+    severity: high
+    evidence: [dlq_contract]
+  - id: REL-03
+    domain: reliability
+    name: circuit_breaker_and_bulkhead
+    severity: high
+    evidence: [circuit_breaker, concurrency_limit]
+  - id: OBS-01
+    domain: observability
+    name: trace_context
+    severity: high
+    evidence: [trace_id, w3c_trace_context]
+  - id: OBS-02
+    domain: observability
+    name: metrics_and_structured_logs
+    severity: high
+    evidence: [metrics, structured_logs]
+  - id: SLO-01
+    domain: slo
+    name: defined_sli_slo
+    severity: medium
+    evidence: [sli, slo, error_budget]
+  - id: AI-01
+    domain: agentic_ai
+    name: governed_model_routing
+    severity: high
+    evidence: [model_router, routing_policy]
+  - id: AI-02
+    domain: agentic_ai
+    name: bounded_tool_use
+    severity: critical
+    evidence: [tool_allowlist, tool_schema_validation, max_tool_hops]
+  - id: AI-03
+    domain: agentic_ai
+    name: eval_and_regression_gate
+    severity: high
+    evidence: [eval_suite, regression_gate]
+  - id: SEC-01
+    domain: security
+    name: secret_boundary
+    severity: critical
+    evidence: [managed_secret_or_env, no_secret_in_payload]
+  - id: SEC-02
+    domain: security
+    name: high_risk_human_gate
+    severity: critical
+    evidence: [human_gate_policy]
+  - id: OPS-01
+    domain: operations
+    name: liveness_readiness_shutdown
+    severity: high
+    evidence: [liveness_probe, readiness_probe, graceful_shutdown]
+  - id: OPS-02
+    domain: operations
+    name: rollback_and_drift
+    severity: high
+    evidence: [rollback_strategy, drift_detection]
+  - id: SUP-01
+    domain: supply_chain
+    name: ci_quality_gate
+    severity: high
+    evidence: [unit_tests, integration_tests, contract_tests, lint, typecheck]
+  - id: PRF-01
+    domain: proof
+    name: proof_chain_order
+    severity: critical
+    evidence: [SECA, DevOS, ProofGrid, Thoth, JANUS_PRIME]
+  - id: LOOP-01
+    domain: closed_loop
+    name: bounded_non_destructive_reconciliation
+    severity: critical
+    evidence: [drift_event, repair_packet, human_gate_for_high_risk]
+certification:
+  pass:
+    max_fail_critical: 0
+    max_fail_high: 0
+    minimum_pass_percent: 95
+  partial:
+    minimum_pass_percent: 70
+  fail:
+    below_pass_percent: 70
