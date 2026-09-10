@@ -1,0 +1,15 @@
+schema_version: 1
+resolution_id: GA-HYPERNET-GLOBAL-RESOLUTION-007
+provider: vercel-backend
+artifact_kind: backend-node-set
+expected_node_count: 82
+source: ga://platform/github
+anchor: ga://backend/vercel
+identity_rule: ga://backend/vercel/<repo-slug>
+materialization: durable-neon-registry
+orchestration: enabled
+automation: enabled
+integration: enabled
+synchronization: enabled
+binding_policy: logical-counterpart-resolve-if-native-project-exists
+truth_rule: backend_artifact_does_not_require_new_vercel_project
