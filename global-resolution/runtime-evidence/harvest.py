@@ -85,7 +85,8 @@ def main() -> int:
     if len(bundles) != 82:
         raise SystemExit(f"RUNTIME_EVIDENCE_INPUT_FAIL expected 82 offices, found {len(bundles)}")
 
-    base_url = os.getenv("GA_HYPERNET_URL", DEFAULT_HYPERNET_URL).strip()
+    configured_url = os.getenv("GA_HYPERNET_URL", "").strip()
+    base_url = configured_url or DEFAULT_HYPERNET_URL
     token = os.getenv("GA_HYPERNET_TOKEN", "").strip()
     enable_canary = os.getenv("GA_ENABLE_SAFE_CANARY", "false").lower() in {"1", "true", "yes", "on"}
     timeout = int(profile["probes"]["health_readiness"].get("timeout_seconds", 10))
