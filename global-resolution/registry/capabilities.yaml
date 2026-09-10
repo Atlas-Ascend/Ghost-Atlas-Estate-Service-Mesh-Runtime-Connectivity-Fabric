@@ -1,0 +1,41 @@
+schema_version: 1
+resolution_id: GA-HYPERNET-GLOBAL-RESOLUTION-001
+capabilities:
+  - {canonical_id: ga://capability/intent.capture, owner: ga://organ/janus-prime, class: ingress}
+  - {canonical_id: ga://capability/command.authorize, owner: ga://organ/janus-prime, class: governance}
+  - {canonical_id: ga://capability/reasoning.execute, owner: ga://organ/atlas-mind, class: cognition}
+  - {canonical_id: ga://capability/memory.persist, owner: ga://organ/thoth, class: memory}
+  - {canonical_id: ga://capability/provenance.resolve, owner: ga://organ/thoth, class: memory}
+  - {canonical_id: ga://capability/casegraph.resolve, owner: ga://organ/maat, class: knowledge-graph}
+  - {canonical_id: ga://capability/packet.create, owner: ga://organ/packet-os, class: work}
+  - {canonical_id: ga://capability/packet.dispatch, owner: ga://organ/workforce-spine, class: work}
+  - {canonical_id: ga://capability/worker.resolve, owner: ga://organ/workforce-spine, class: execution}
+  - {canonical_id: ga://capability/research.execute, owner: ga://organ/gari, class: research}
+  - {canonical_id: ga://capability/software.design, owner: ga://organ/metaforge, class: engineering}
+  - {canonical_id: ga://capability/software.build, owner: ga://organ/metaforge, class: engineering}
+  - {canonical_id: ga://capability/build.execute, owner: ga://organ/vulcan, class: engineering}
+  - {canonical_id: ga://capability/route.resolve, owner: ga://organ/crowngrid, class: routing}
+  - {canonical_id: ga://capability/capability.resolve, owner: ga://organ/crowngrid, class: routing}
+  - {canonical_id: ga://capability/runtime.resolve, owner: ga://organ/crowngrid, class: routing}
+  - {canonical_id: ga://capability/transport.resolve, owner: ga://organ/hypernet, class: transport}
+  - {canonical_id: ga://capability/compute.execute, owner: ga://organ/vishvarupa, class: runtime}
+  - {canonical_id: ga://capability/model.infer, owner: ga://organ/atlas-mind, class: cognition}
+  - {canonical_id: ga://capability/service.host, owner: ga://organ/vishvarupa, class: runtime}
+  - {canonical_id: ga://capability/data.persist, owner: ga://organ/vishvarupa, class: data}
+  - {canonical_id: ga://capability/policy.evaluate, owner: ga://organ/medusa, class: security}
+  - {canonical_id: ga://capability/machine.govern, owner: ga://organ/heimdall, class: governance}
+  - {canonical_id: ga://capability/artifact.verify, owner: ga://organ/seca, class: verification}
+  - {canonical_id: ga://capability/release.verify, owner: ga://organ/devos, class: verification}
+  - {canonical_id: ga://capability/deployment.authorize, owner: ga://organ/devos, class: release}
+  - {canonical_id: ga://capability/receipt.issue, owner: ga://organ/proofgrid, class: proof}
+  - {canonical_id: ga://capability/evidence.bind, owner: ga://organ/proofgrid, class: proof}
+  - {canonical_id: ga://capability/event.publish, owner: ga://organ/estate-event-gateway, class: event}
+  - {canonical_id: ga://capability/event.subscribe, owner: ga://organ/estate-event-gateway, class: event}
+  - {canonical_id: ga://capability/state.observe, owner: ga://organ/runtime-observatory, class: observability}
+  - {canonical_id: ga://capability/public.ingress, owner: ga://organ/hermes, class: ingress}
+  - {canonical_id: ga://capability/public.egress, owner: ga://organ/hermes, class: egress}
+  - {canonical_id: ga://capability/field.capture, owner: ga://organ/argus, class: field}
+  - {canonical_id: ga://capability/field.ingest, owner: ga://organ/roadbridge, class: field}
+  - {canonical_id: ga://capability/community.route, owner: ga://organ/serverforge, class: community}
+  - {canonical_id: ga://capability/audience.route, owner: ga://organ/audience-forge, class: commercial}
+  - {canonical_id: ga://capability/publication.route, owner: ga://organ/content-engine, class: publication}
