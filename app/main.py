@@ -10,6 +10,7 @@ from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
 
 from .dispatch import DispatchFabric
+from .executors import ExecutorRegistry
 from .global_resolver import GlobalResolver, ResolutionError
 from .mesh import MeshEngine, MeshError
 from .models import InvokeRequest, MeshPolicy, ResolveRequest
@@ -30,10 +31,12 @@ ENGINE = MeshEngine(
 )
 RESOLVER = GlobalResolver()
 DISPATCH = DispatchFabric(RESOLVER)
+EXECUTORS = ExecutorRegistry().install_defaults()
+EXECUTORS.attach(DISPATCH)
 
 app = FastAPI(
     title="Ghost Atlas Estate Service Mesh / Runtime Connectivity Fabric",
-    version="0.3.0",
+    version="0.4.0",
 )
 
 
@@ -100,17 +103,28 @@ def health() -> dict[str, Any]:
         "circuits": ENGINE.circuits.snapshot(),
         "service_identity_signing": bool(ENGINE.shared_secret),
         "global_resolution": validation,
-        "dispatch_fabric": "GA-HYPERNET-GLOBAL-RESOLUTION-003",
+        "dispatch_fabric": "GA-HYPERNET-GLOBAL-RESOLUTION-004",
         "dispatches": len(DISPATCH.records),
+        "executors": EXECUTORS.snapshot(),
     }
 
 
 @app.get("/ready")
-def ready() -> dict[str, str]:
+def ready() -> dict[str, Any]:
     validation = RESOLVER.validate()
     if validation["status"] != "pass":
         raise HTTPException(status_code=503, detail=validation)
-    return {"status": "ready", "service": "estate.service-mesh", "resolver": "GA-HYPERNET-GLOBAL-RESOLUTION-003"}
+    return {
+        "status": "ready",
+        "service": "estate.service-mesh",
+        "resolver": "GA-HYPERNET-GLOBAL-RESOLUTION-004",
+        "executors": EXECUTORS.snapshot(),
+    }
+
+
+@app.get("/v1/executors")
+def executor_topology() -> dict[str, Any]:
+    return EXECUTORS.snapshot()
 
 
 @app.get("/v1/mesh/policies")
@@ -254,7 +268,9 @@ def dispatch_get(dispatch_id: str) -> dict[str, Any]:
 
 @app.get("/v1/dispatch")
 def dispatch_topology() -> dict[str, Any]:
-    return DISPATCH.topology()
+    topology = DISPATCH.topology()
+    topology["executor_bindings"] = EXECUTORS.snapshot()
+    return topology
 
 
 async def _event_stream() -> AsyncIterator[str]:
