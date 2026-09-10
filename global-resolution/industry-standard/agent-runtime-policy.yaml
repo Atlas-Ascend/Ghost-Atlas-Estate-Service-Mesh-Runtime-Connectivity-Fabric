@@ -1,0 +1,51 @@
+schema_version: 1
+resolution_id: GA-HYPERNET-GLOBAL-RESOLUTION-009
+agent_runtime:
+  execution_model: logical_agent_endpoints_shared_model_pool
+  office_count: 82
+  chatbot_count: 82
+  role_count: 82
+  state_model: stateless_worker_with_externalized_durable_state
+  orchestration_owner: ga://organ/janus-prime
+  work_owner: ga://organ/packet-os
+  workforce_owner: ga://organ/workforce-spine
+  route_owner: ga://organ/crowngrid
+  memory_owner: ga://organ/thoth
+model_routing:
+  required: true
+  selection_dimensions: [capability, quality, latency, cost, context_window, tool_support, data_classification, locality]
+  fallbacks: bounded
+  circuit_breaker_per_model: true
+  structured_output_validation: required_when_schema_declared
+  prompt_injection_defense: required_for_untrusted_context
+tooling:
+  allowlist_per_role: required
+  schema_validation: required
+  side_effect_classification: required
+  idempotency_for_mutation: required
+  arbitrary_shell: forbidden
+  destructive_action: human_gate
+memory:
+  short_term: request_scoped
+  durable: thoth
+  retrieval_provenance: required
+  write_provenance: required
+  sensitive_context_minimization: required
+quality:
+  eval_sets: [routing, tool_selection, task_success, hallucination, policy_compliance, regression]
+  pre_release_eval_gate: required
+  canary_after_release: required
+  rollback_on_critical_regression: required
+security:
+  least_privilege: required
+  tenant_or_scope_isolation: required
+  secret_redaction: required
+  audit_every_tool_call: true
+  audit_every_policy_decision: true
+human_control:
+  required_for: [destructive, irreversible_external_action, privilege_escalation, production_secret_change, security_policy_override]
+closed_loop:
+  order: [observe, classify, authorize, plan, dispatch, execute, verify, prove, remember, reconcile]
+  auto_repair: bounded_non_destructive
+  max_repair_cycles: 3
+  escalation_after_cycles: true
