@@ -1,0 +1,37 @@
+schema_version: 1
+resolution_id: GA-HYPERNET-GLOBAL-RESOLUTION-001
+repos:
+  - {canonical_id: ga://repo/ghost-atlas-os, github: Atlas-Ascend/Ghost-Atlas-OS, organ: ga://organ/janus-prime, class: estate-os}
+  - {canonical_id: ga://repo/control-plane, github: Atlas-Ascend/Ghost-Atlas-Control-Plane, organ: ga://organ/janus-prime, class: control-plane}
+  - {canonical_id: ga://repo/service-mesh, github: Atlas-Ascend/Ghost-Atlas-Estate-Service-Mesh-Runtime-Connectivity-Fabric, organ: ga://organ/hypernet, class: connectivity}
+  - {canonical_id: ga://repo/event-gateway, github: Atlas-Ascend/Ghost-Atlas-Estate-Event-Gateway, organ: ga://organ/estate-event-gateway, class: events}
+  - {canonical_id: ga://repo/command-center, github: Atlas-Ascend/Ghost-Atlas-Command-Center, organ: ga://organ/command-center, class: operator-ui}
+  - {canonical_id: ga://repo/runtime-observatory, github: Atlas-Ascend/Ghost-Atlas-Runtime-Observatory, organ: ga://organ/runtime-observatory, class: observability}
+  - {canonical_id: ga://repo/software-factory, github: Atlas-Ascend/Ghost-Atlas-Software-Factory-End-to-End-SDLC-Control-Plane, organ: ga://organ/metaforge, class: software-factory}
+  - {canonical_id: ga://repo/release-control, github: Atlas-Ascend/Ghost-Atlas-Release-Deployment-Control-Plane, organ: ga://organ/devos, class: release}
+  - {canonical_id: ga://repo/machine-wake, github: Atlas-Ascend/Ghost-Atlas-Machine-Wake-Resident-Control-Plane, organ: ga://organ/prometheus, class: resident-runtime}
+  - {canonical_id: ga://repo/autonomous-reconciler, github: Atlas-Ascend/-Autonomous-Self-Reconciling-Software-Factory-Estate-Control-Plane, organ: ga://organ/metaforge, class: reconciliation}
+  - {canonical_id: ga://repo/repo-custodians, github: Atlas-Ascend/Federated-Autonomous-Repository-Custodian-Agent-Fabric, organ: ga://organ/workforce-spine, class: repository-ops}
+  - {canonical_id: ga://repo/packet-os, github: Atlas-Ascend/Packet-OS, organ: ga://organ/packet-os, class: work-substrate}
+  - {canonical_id: ga://repo/workforce-spine, github: Atlas-Ascend/workforce-spine, organ: ga://organ/workforce-spine, class: execution}
+  - {canonical_id: ga://repo/crowngrid, github: Atlas-Ascend/Crowngrid, organ: ga://organ/crowngrid, class: routing}
+  - {canonical_id: ga://repo/thoth, github: Atlas-Ascend/thoth-archive-engine, organ: ga://organ/thoth, class: memory}
+  - {canonical_id: ga://repo/atlas-mind, github: Atlas-Ascend/Atlas-Mind-LLM, organ: ga://organ/atlas-mind, class: cognition}
+  - {canonical_id: ga://repo/eden-agi, github: Atlas-Ascend/Eden-AGI, organ: ga://organ/eden-agi, class: cognition}
+  - {canonical_id: ga://repo/eden-os, github: Atlas-Ascend/Eden-AI-Emerald-Tablet-OS-, organ: ga://organ/eden, class: runtime-os}
+  - {canonical_id: ga://repo/vishvarupa, github: Atlas-Ascend/VISHVARUPA-Software-Hardware-Organism, organ: ga://organ/vishvarupa, class: organism-runtime}
+  - {canonical_id: ga://repo/vishvarupa-cloud-twin, github: Atlas-Ascend/VISHVARUPA-Cloud-Digital-Twin, organ: ga://organ/vishvarupa, class: cloud-twin}
+  - {canonical_id: ga://repo/seca, github: Atlas-Ascend/SECA, organ: ga://organ/seca, class: verification}
+  - {canonical_id: ga://repo/devos, github: Atlas-Ascend/DEVOS, organ: ga://organ/devos, class: release-truth}
+  - {canonical_id: ga://repo/medusa, github: Atlas-Ascend/Medusa-Sovereign-Security, organ: ga://organ/medusa, class: security}
+  - {canonical_id: ga://repo/heimdall, github: Atlas-Ascend/HEIMDALL-Machine-Governor, organ: ga://organ/heimdall, class: governance}
+  - {canonical_id: ga://repo/maat, github: Atlas-Ascend/MAAT-Universal-CaseGraph, organ: ga://organ/maat, class: knowledge-graph}
+  - {canonical_id: ga://repo/gari, github: Atlas-Ascend/GARI-, organ: ga://organ/gari, class: research}
+  - {canonical_id: ga://repo/janus-prime, github: Atlas-Ascend/Janus-Prime, organ: ga://organ/janus-prime, class: executive}
+  - {canonical_id: ga://repo/janus-odin, github: Atlas-Ascend/Janus-Odin, organ: ga://organ/janus-prime, class: operator-fabric}
+  - {canonical_id: ga://repo/hermes, github: Atlas-Ascend/HERMES-Public-Access-Relay, organ: ga://organ/hermes, class: public-relay}
+  - {canonical_id: ga://repo/argus, github: Atlas-Ascend/ARGUS-FieldVision, organ: ga://organ/argus, class: field-sensing}
+  - {canonical_id: ga://repo/research-institute, github: Atlas-Ascend/Ghost-Atlas-Research-Institute, organ: ga://organ/gari, class: research-institute}
+  - {canonical_id: ga://repo/company-9, github: Atlas-Ascend/Atlas-Company-9, organ: ga://organ/audience-forge, class: business}
+  - {canonical_id: ga://repo/company-9-factory, github: Atlas-Ascend/Atlas-Company-9-Factory, organ: ga://organ/metaforge, class: business-factory}
+  - {canonical_id: ga://repo/organism-convergence, github: Atlas-Ascend/Atlas-Ascend-GA-ORGANISM-CONVERGENCE, organ: ga://organ/janus-prime, class: convergence}
