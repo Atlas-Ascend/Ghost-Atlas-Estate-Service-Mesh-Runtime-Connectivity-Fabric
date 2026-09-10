@@ -1,0 +1,19 @@
+schema_version: 1
+resolution_id: GA-HYPERNET-GLOBAL-RESOLUTION-001
+services:
+  - {canonical_id: ga://service/control-plane, owner: ga://organ/janus-prime, capability: ga://capability/command.authorize, exposure: private}
+  - {canonical_id: ga://service/cognition, owner: ga://organ/atlas-mind, capability: ga://capability/reasoning.execute, exposure: private}
+  - {canonical_id: ga://service/memory, owner: ga://organ/thoth, capability: ga://capability/memory.persist, exposure: private}
+  - {canonical_id: ga://service/casegraph, owner: ga://organ/maat, capability: ga://capability/casegraph.resolve, exposure: private}
+  - {canonical_id: ga://service/packet-bus, owner: ga://organ/packet-os, capability: ga://capability/packet.create, exposure: private}
+  - {canonical_id: ga://service/workforce, owner: ga://organ/workforce-spine, capability: ga://capability/packet.dispatch, exposure: private}
+  - {canonical_id: ga://service/software-factory, owner: ga://organ/metaforge, capability: ga://capability/software.build, exposure: private}
+  - {canonical_id: ga://service/global-router, owner: ga://organ/crowngrid, capability: ga://capability/route.resolve, exposure: private}
+  - {canonical_id: ga://service/event-bus, owner: ga://organ/estate-event-gateway, capability: ga://capability/event.publish, exposure: private}
+  - {canonical_id: ga://service/verification, owner: ga://organ/seca, capability: ga://capability/artifact.verify, exposure: private}
+  - {canonical_id: ga://service/release, owner: ga://organ/devos, capability: ga://capability/deployment.authorize, exposure: private}
+  - {canonical_id: ga://service/proof, owner: ga://organ/proofgrid, capability: ga://capability/receipt.issue, exposure: mixed}
+  - {canonical_id: ga://service/public-relay, owner: ga://organ/hermes, capability: ga://capability/public.ingress, exposure: public}
+  - {canonical_id: ga://service/consulting, owner: ga://organ/janus-prime, capability: ga://capability/public.ingress, exposure: public}
+  - {canonical_id: ga://service/atlas-company-9, owner: ga://organ/audience-forge, capability: ga://capability/audience.route, exposure: public}
+  - {canonical_id: ga://service/research-institute, owner: ga://organ/gari, capability: ga://capability/research.execute, exposure: mixed}
