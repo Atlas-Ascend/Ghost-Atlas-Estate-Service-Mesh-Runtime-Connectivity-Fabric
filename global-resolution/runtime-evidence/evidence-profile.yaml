@@ -1,0 +1,66 @@
+schema_version: 1
+resolution_id: GA-HYPERNET-GLOBAL-RESOLUTION-011
+name: Live Runtime Evidence Harvester
+scope:
+  offices: 82
+  certification_profile: Ghost Atlas Industry Conformance Profile v1
+truth:
+  declaration_is_not_runtime_proof: true
+  unavailable_evidence_is_not_pass: true
+  safe_canary_only: true
+  destructive_probe: forbidden
+sources:
+  service_mesh:
+    base_url_env: GA_HYPERNET_URL
+    token_env: GA_HYPERNET_TOKEN
+    endpoints:
+      health: /health
+      ready: /ready
+      executors: /v1/executors
+      topology: /v1/global/topology
+      events: /v1/global/events
+      dispatches: /v1/dispatch
+  provider_state:
+    neon: durable_registry
+    github: repository_and_ci
+    render: runtime_binding
+    vercel: project_binding
+probes:
+  health_readiness:
+    enabled: true
+    timeout_seconds: 10
+  executor_bindings:
+    enabled: true
+  topology:
+    enabled: true
+  observability:
+    enabled: true
+    evidence_keys: [trace_id, request_id, events, metrics, structured_logs]
+  queue_retry:
+    enabled: true
+    evidence_keys: [retryable, max_attempts, dead_letter, queue]
+  safe_canary:
+    enabled_env: GA_ENABLE_SAFE_CANARY
+    default: false
+    capability: model.infer
+    source: ga://organ/janus-prime
+    io_class: PACKET
+    payload:
+      intent: hypernet-conformance-canary
+      destructive: false
+    completion_required: false
+  proof_chain:
+    enabled: true
+    required_order:
+      - ga://organ/seca
+      - ga://organ/devos
+      - ga://organ/proofgrid
+      - ga://organ/thoth
+      - ga://organ/janus-prime
+states:
+  runtime: [LIVE, DEGRADED, STALE, OFFLINE, UNKNOWN]
+  evidence: [PROVEN, OBSERVED, DECLARED, MISSING, ERROR]
+output:
+  report: global-resolution/runtime-evidence/runtime-evidence-report.json
+  receipt: global-resolution/runtime-evidence/runtime-evidence-receipt.json
+  repair_targets: global-resolution/runtime-evidence/repair-targets.json
