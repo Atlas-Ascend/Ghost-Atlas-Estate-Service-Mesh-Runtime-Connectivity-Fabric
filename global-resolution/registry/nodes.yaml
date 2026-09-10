@@ -1,0 +1,147 @@
+schema_version: 1
+resolution_id: GA-HYPERNET-GLOBAL-RESOLUTION-001
+nodes:
+  - canonical_id: ga://node/eden
+    class: runtime-node
+    owner: ga://organ/eden
+    runtime: local
+    location: sovereign-local
+    transport: [local, tailscale, ssh, https]
+    capabilities: [compute.execute, model.infer, packet.dispatch, service.host]
+    accepts: [COMMAND, PACKET, ARTIFACT]
+    emits: [STATE, EVENT, RECEIPT, RESOURCE]
+    authority_level: bounded-executor
+    security_class: private
+    health: discover
+    state: registered
+    dependencies: [ga://organ/crowngrid, ga://organ/packet-os]
+    endpoints: []
+    proof_requirement: execution-receipt
+  - canonical_id: ga://node/janus
+    class: operator-node
+    owner: ga://organ/janus-prime
+    runtime: mobile
+    location: field
+    transport: [local, bluetooth, tailscale, ssh, https]
+    capabilities: [intent.capture, command.authorize, packet.dispatch, estate.observe]
+    accepts: [INTENT, QUERY, SIGNAL]
+    emits: [COMMAND, DECISION, EVENT]
+    authority_level: executive-interface
+    security_class: private
+    health: discover
+    state: registered
+    dependencies: [ga://organ/janus-prime]
+    endpoints: []
+    proof_requirement: decision-receipt
+  - canonical_id: ga://node/odin
+    class: operator-node
+    owner: ga://organ/janus-prime
+    runtime: mobile
+    location: field
+    transport: [local, bluetooth, tailscale, ssh, https]
+    capabilities: [field.execute, packet.dispatch, diagnostics.run, estate.observe]
+    accepts: [COMMAND, PACKET, SIGNAL]
+    emits: [STATE, EVENT, RECEIPT]
+    authority_level: bounded-executor
+    security_class: private
+    health: discover
+    state: registered
+    dependencies: [ga://organ/crowngrid, ga://organ/packet-os]
+    endpoints: []
+    proof_requirement: execution-receipt
+  - canonical_id: ga://node/gaia
+    class: compute-node
+    owner: ga://organ/hypernet
+    runtime: local
+    location: sovereign-local
+    transport: [local, tailscale, ssh]
+    capabilities: [compute.execute, build.execute, service.host]
+    accepts: [COMMAND, PACKET, ARTIFACT]
+    emits: [STATE, EVENT, RESOURCE, RECEIPT]
+    authority_level: bounded-executor
+    security_class: private
+    health: discover
+    state: registered
+    dependencies: [ga://organ/crowngrid]
+    endpoints: []
+    proof_requirement: execution-receipt
+  - canonical_id: ga://node/t5810-01
+    class: compute-node
+    owner: ga://organ/hypernet
+    runtime: local
+    location: sovereign-local
+    transport: [local, tailscale, ssh]
+    capabilities: [compute.execute, build.execute, model.infer, service.host]
+    accepts: [COMMAND, PACKET, ARTIFACT]
+    emits: [STATE, EVENT, RESOURCE, RECEIPT]
+    authority_level: bounded-executor
+    security_class: private
+    health: discover
+    state: registered
+    dependencies: [ga://organ/crowngrid]
+    endpoints: []
+    proof_requirement: execution-receipt
+  - canonical_id: ga://node/t5810-02
+    class: compute-node
+    owner: ga://organ/hypernet
+    runtime: local
+    location: sovereign-local
+    transport: [local, tailscale, ssh]
+    capabilities: [compute.execute, build.execute, model.infer, service.host]
+    accepts: [COMMAND, PACKET, ARTIFACT]
+    emits: [STATE, EVENT, RESOURCE, RECEIPT]
+    authority_level: bounded-executor
+    security_class: private
+    health: discover
+    state: registered
+    dependencies: [ga://organ/crowngrid]
+    endpoints: []
+    proof_requirement: execution-receipt
+  - canonical_id: ga://node/render
+    class: cloud-runtime
+    owner: ga://organ/vishvarupa
+    runtime: render
+    location: cloud
+    transport: [https, sse, queue]
+    capabilities: [service.host, worker.run, api.serve]
+    accepts: [DEPLOYMENT, PACKET, COMMAND]
+    emits: [STATE, EVENT, RECEIPT]
+    authority_level: bounded-runtime
+    security_class: mixed
+    health: discover
+    state: registered
+    dependencies: [ga://organ/devos, ga://organ/proofgrid]
+    endpoints: []
+    proof_requirement: deployment-receipt
+  - canonical_id: ga://node/vercel
+    class: cloud-runtime
+    owner: ga://organ/vishvarupa
+    runtime: vercel
+    location: cloud
+    transport: [https]
+    capabilities: [surface.host, frontend.deploy, api.serve]
+    accepts: [DEPLOYMENT, ARTIFACT]
+    emits: [STATE, EVENT, RECEIPT]
+    authority_level: bounded-runtime
+    security_class: public-edge
+    health: discover
+    state: registered
+    dependencies: [ga://organ/devos, ga://organ/proofgrid]
+    endpoints: []
+    proof_requirement: deployment-receipt
+  - canonical_id: ga://node/neon
+    class: data-runtime
+    owner: ga://organ/vishvarupa
+    runtime: postgres
+    location: cloud
+    transport: [postgres, https]
+    capabilities: [data.persist, data.query, queue.persist]
+    accepts: [QUERY, COMMAND, ARTIFACT]
+    emits: [STATE, EVENT]
+    authority_level: data-service
+    security_class: private
+    health: discover
+    state: registered
+    dependencies: [ga://organ/medusa]
+    endpoints: []
+    proof_requirement: audit-event
