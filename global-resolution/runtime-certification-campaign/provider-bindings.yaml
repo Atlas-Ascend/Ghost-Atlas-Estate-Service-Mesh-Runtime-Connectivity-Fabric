@@ -1,0 +1,42 @@
+schema_version: 1
+campaign_id: GA-HYPERNET-RUNTIME-CERTIFICATION-CAMPAIGN-012-016
+providers:
+  github:
+    role: canonical_source_truth_and_ci
+    anchor: ga://platform/github
+    logical_nodes: 82
+    observed_repositories: 81
+    controls: [build_truth, industry_conformance, runtime_evidence, certification_artifacts]
+  render:
+    role: canonical_public_runtime_and_execution_observation
+    anchor: ga://platform/render
+    logical_nodes: 82
+    observed_services: 24
+    runtime_url: https://ghost-atlas-runtime-gateway.onrender.com
+    runtime_service_id: srv-dafnibv40ujc73c2o8qg
+    env_binding: [GA_HYPERNET_URL, GA_RUNTIME_CERTIFICATION_CAMPAIGN, GA_RUNTIME_CERTIFICATION_MODE, GA_NEON_REGISTRY_PROJECT, GA_HYPERNET_PROVIDER_FEDERATION]
+  vercel:
+    role: deployment_and_surface_observation_plane
+    anchor: ga://platform/vercel
+    logical_nodes: 82
+    observed_projects: 18
+    team_id: team_DsWa4h5JsUMelhlqijg1wPx3
+    write_boundary: connector_does_not_expose_arbitrary_existing_project_env_mutation
+  neon:
+    role: durable_system_of_record
+    anchor: ga://platform/neon
+    logical_nodes: 82
+    observed_projects: 5
+    registry_project_id: billowing-moon-84254590
+    registry_table: hypernet_platform_nodes
+    persisted_objects:
+      backend_nodes: 328
+      offices: 82
+      chatbots: 82
+      agent_roles: 82
+synchronization:
+  source: github
+  durable_state: neon
+  runtime_observation: render
+  surface_observation: vercel
+  loop: observe -> certify -> repair_packet -> execute -> verify -> prove -> persist -> reobserve

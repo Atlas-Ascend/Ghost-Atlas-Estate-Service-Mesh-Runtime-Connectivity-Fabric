@@ -1,0 +1,48 @@
+schema_version: 1
+campaign_id: GA-HYPERNET-RUNTIME-CERTIFICATION-CAMPAIGN-012-016
+scope:
+  offices: 82
+  chatbots: 82
+  agent_roles: 82
+  backend_planes: [github, render, vercel, neon]
+phases:
+  - id: 012
+    name: live-endpoint-binding
+    objective: bind an externally reachable Hypernet runtime and make CI probe it
+  - id: 013
+    name: runtime-evidence-expansion
+    objective: collect provider, health, topology, executor, event, dispatch, trace, metric, and proof evidence
+  - id: 014
+    name: repair-to-certification-loop
+    objective: convert missing evidence and failed controls into bounded non-destructive repair packets
+  - id: 015
+    name: office-live-certification
+    objective: certify all 82 offices using runtime evidence rather than configuration declarations
+  - id: 016
+    name: estate-runtime-seal
+    objective: persist evidence, receipts, provider bindings, and drift re-certification state
+canonical_runtime:
+  provider: render
+  url: https://ghost-atlas-runtime-gateway.onrender.com
+  service_id: srv-dafnibv40ujc73c2o8qg
+system_of_record:
+  provider: neon
+  project_id: billowing-moon-84254590
+  table: hypernet_platform_nodes
+source_truth:
+  provider: github
+  repository: Atlas-Ascend/Ghost-Atlas-Estate-Service-Mesh-Runtime-Connectivity-Fabric
+surface_observation:
+  provider: vercel
+  team_id: team_DsWa4h5JsUMelhlqijg1wPx3
+  project_count_observed: 18
+render_observation:
+  workspace_id: tea-d8ghr467r5hc73b6jst0
+  service_count_observed: 24
+truth_rules:
+  - registration_does_not_equal_runtime_proof
+  - configuration_pass_does_not_equal_runtime_pass
+  - missing_or_incompatible_endpoint_is_failure_evidence
+  - no_destructive_auto_reconciliation
+  - no_arbitrary_shell
+  - proof_chain_cannot_be_bypassed

@@ -1,0 +1,40 @@
+schema_version: 1
+campaign_id: GA-HYPERNET-RUNTIME-CERTIFICATION-CAMPAIGN-012-016
+definition_of_finished:
+  inventory:
+    offices: 82
+    chatbots: 82
+    agent_roles: 82
+    provider_logical_nodes_each: 82
+  provider_state:
+    github_ci: PASS
+    render_runtime: LIVE_OR_EXPLICITLY_DEGRADED_WITH_REPAIR_TARGET
+    vercel_inventory: OBSERVED
+    neon_registry: DURABLE
+  certification:
+    structural_offices_pass: 82
+    runtime_offices_target_pass: 82
+    critical_control_failures_target: 0
+    high_control_failures_target: 0
+  evidence:
+    runtime_health: required
+    runtime_readiness: required
+    executor_bindings: required
+    topology: required
+    events: required
+    dispatch: required
+    provider_inventory: required
+    proof_receipt: required
+  proof_chain:
+    order: [SECA, DevOS, ProofGrid, Thoth, JANUS_PRIME]
+    bypass: forbidden
+  closed_loop:
+    drift_detection: required
+    repair_packet_generation: required
+    bounded_non_destructive_repair: required
+    reharvest: required
+    recertification: required
+  seal_rule: >-
+    SEALED only when live evidence proves required controls. If any external runtime or provider
+    surface is unreachable or incompatible, campaign remains PARTIAL with explicit repair targets;
+    configuration alone can never satisfy the seal.
