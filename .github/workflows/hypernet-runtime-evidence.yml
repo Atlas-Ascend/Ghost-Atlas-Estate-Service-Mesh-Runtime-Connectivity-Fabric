@@ -34,6 +34,8 @@ jobs:
           GA_HYPERNET_TOKEN: ${{ secrets.GA_HYPERNET_TOKEN }}
           GA_ENABLE_SAFE_CANARY: 'false'
         run: python global-resolution/runtime-evidence/harvest.py
+      - name: Runtime-aware certification
+        run: python global-resolution/runtime-evidence/certify_runtime.py
       - name: Structural certification
         run: python global-resolution/conformance/certify.py || true
       - uses: actions/upload-artifact@v4
@@ -43,5 +45,6 @@ jobs:
           path: |
             global-resolution/runtime-evidence/runtime-evidence-report.json
             global-resolution/runtime-evidence/runtime-evidence-receipt.json
+            global-resolution/runtime-evidence/runtime-certification-report.json
             global-resolution/runtime-evidence/repair-targets.json
             global-resolution/conformance/certification-report.json
