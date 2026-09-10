@@ -1,0 +1,15 @@
+schema_version: 1
+resolution_id: GA-HYPERNET-GLOBAL-RESOLUTION-007
+provider: github-backend
+artifact_kind: backend-node-set
+expected_node_count: 82
+source: ga://platform/github
+anchor: ga://backend/github
+identity_rule: ga://backend/github/<repo-slug>
+materialization: durable-neon-registry
+orchestration: enabled
+automation: enabled
+integration: enabled
+synchronization: enabled
+binding_policy: physical-github-repository
+truth_rule: registration_does_not_equal_runtime_proof
