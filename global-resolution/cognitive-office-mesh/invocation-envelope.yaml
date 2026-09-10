@@ -1,0 +1,16 @@
+schema_version: 1
+name: Hypernet Office Invocation Envelope
+request:
+  required: [request_id, office_id, actor, intent]
+  optional: [chatbot_id, role_id, capability, context_refs, packet_id, preferred_runtime]
+  authority:
+    default: ga://organ/janus-prime
+    human_override: explicit_only
+  execution:
+    packetize: true
+    shell: false
+    bounded_tools_only: true
+response:
+  required: [request_id, office_id, status]
+  optional: [packet_id, selected_role, selected_runtime, output_refs, events, proof_receipt, memory_ref, next_packet]
+status: [ACCEPTED, ROUTED, RUNNING, VERIFYING, PROVING, REMEMBERING, COMPLETED, FAILED, HUMAN_REQUIRED]

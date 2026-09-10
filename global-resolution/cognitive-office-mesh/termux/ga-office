@@ -1,0 +1,66 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -euo pipefail
+
+BASE_URL="${GA_HYPERNET_URL:-http://127.0.0.1:8000}"
+TOKEN="${GA_HYPERNET_TOKEN:-}"
+REGISTRY="${GA_OFFICE_REGISTRY:-$HOME/.config/ghost-atlas/cognitive-office-mesh/bundles.yaml}"
+headers=(-H 'Content-Type: application/json')
+if [ -n "$TOKEN" ]; then headers+=(-H "Authorization: Bearer $TOKEN"); fi
+
+usage(){ echo "ga-office list | status <office> | ask <office> <intent...> | dispatch <office> <capability> <json> | sync | loop | topology"; }
+normalize(){ case "$1" in ga://office/*) printf '%s' "$1";; *) printf 'ga://office/%s' "$1";; esac; }
+
+cmd="${1:-}"
+case "$cmd" in
+  list)
+    test -f "$REGISTRY" || { echo "OFFICE_REGISTRY_MISSING=$REGISTRY"; exit 3; }
+    grep '^  office:' "$REGISTRY" | sed 's/^  office: //'
+    ;;
+  status)
+    office=$(normalize "${2:?office id required}")
+    test -f "$REGISTRY" || { echo "OFFICE_REGISTRY_MISSING=$REGISTRY"; exit 3; }
+    grep -F -B1 -A4 "  office: $office" "$REGISTRY" || { echo "OFFICE_NOT_FOUND=$office"; exit 4; }
+    ;;
+  ask)
+    office=$(normalize "${2:?office id required}"); shift 2; intent="$*"
+    packet=$(python - <<'PY'
+import uuid
+print(uuid.uuid4())
+PY
+)
+    payload=$(python - "$packet" "$office" "$intent" <<'PY'
+import json,sys
+print(json.dumps({"packet_id":sys.argv[1],"capability":"model.infer","payload":{"office_id":sys.argv[2],"intent":sys.argv[3],"chat_mode":True},"source":sys.argv[2],"io_class":"PACKET","prefer_local":True,"execute":True}))
+PY
+)
+    curl -fsS "${headers[@]}" -X POST "$BASE_URL/v1/dispatch" -d "$payload"
+    ;;
+  dispatch)
+    office=$(normalize "${2:?office id required}"); capability="${3:?capability required}"; raw="${4:-{}}"
+    packet=$(python - <<'PY'
+import uuid
+print(uuid.uuid4())
+PY
+)
+    payload=$(python - "$packet" "$office" "$capability" "$raw" <<'PY'
+import json,sys
+print(json.dumps({"packet_id":sys.argv[1],"capability":sys.argv[3],"payload":{"office_id":sys.argv[2],"input":json.loads(sys.argv[4])},"source":sys.argv[2],"io_class":"PACKET","prefer_local":True,"execute":True}))
+PY
+)
+    curl -fsS "${headers[@]}" -X POST "$BASE_URL/v1/dispatch" -d "$payload"
+    ;;
+  sync)
+    curl -fsS "${headers[@]}" -X POST "$BASE_URL/v1/global/reload"
+    ;;
+  topology)
+    curl -fsS "${headers[@]}" "$BASE_URL/v1/global/topology"
+    ;;
+  loop)
+    curl -fsS "${headers[@]}" -X POST "$BASE_URL/v1/global/reload" >/dev/null
+    echo 'GLOBAL_RESOLUTION=RELOADED'
+    curl -fsS "${headers[@]}" "$BASE_URL/v1/dispatch"
+    echo
+    curl -fsS "${headers[@]}" "$BASE_URL/v1/global/topology"
+    ;;
+  *) usage; exit 2;;
+esac

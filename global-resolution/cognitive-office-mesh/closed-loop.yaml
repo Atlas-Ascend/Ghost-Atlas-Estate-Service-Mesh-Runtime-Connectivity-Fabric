@@ -1,0 +1,34 @@
+schema_version: 1
+loop_id: GA-HYPERNET-OFFICE-CLOSED-LOOP-001
+entrypoints:
+  - termux
+  - api
+  - estate-event
+  - packet-os
+cycle:
+  - RECEIVE_INTENT
+  - RESOLVE_OFFICE
+  - LOAD_CHATBOT_CONTEXT
+  - AUTHORIZE_WITH_JANUS
+  - CREATE_PACKET
+  - RESOLVE_ROLE
+  - RESOLVE_CAPABILITY
+  - SELECT_RUNTIME
+  - EXECUTE_BOUNDED
+  - EMIT_EVENTS
+  - VERIFY_SECA
+  - VERIFY_DEVOS
+  - BIND_PROOFGRID
+  - COMMIT_THOTH_MEMORY
+  - RECONCILE_JANUS_STATE
+  - EVALUATE_NEXT_PACKET
+terminal_states: [COMPLETED, FAILED, HUMAN_REQUIRED]
+repair:
+  drift_event: estate.office.drifted
+  action: create_bounded_repair_packet
+  destructive_auto_repair: false
+sync:
+  source_truth: github-build-truth
+  durable_state: neon-estate-registry
+  runtime_observation: [render, vercel, local-hypernet]
+  event_bus: ga://organ/estate-event-gateway
