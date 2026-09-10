@@ -1,12 +1,13 @@
 [project]
 name = "ghost-atlas-estate-service-mesh"
-version = "0.1.0"
-description = "Ghost Atlas east-west runtime connectivity fabric"
+version = "0.2.0"
+description = "Ghost Atlas east-west runtime connectivity fabric and global Hypernet I/O resolver"
 requires-python = ">=3.11"
 dependencies = [
   "fastapi>=0.116,<1",
   "httpx>=0.28,<1",
   "pydantic>=2.11,<3",
+  "pyyaml>=6.0,<7",
   "uvicorn[standard]>=0.35,<1",
 ]
 
