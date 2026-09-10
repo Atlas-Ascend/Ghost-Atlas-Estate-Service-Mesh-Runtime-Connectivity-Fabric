@@ -1,0 +1,87 @@
+schema_version: 1
+resolution_id: GA-HYPERNET-GLOBAL-RESOLUTION-006
+federation:
+  canonical_root: ga://federation/estate
+  policy:
+    registration_mode: discovered-and-declared
+    github_scope: Atlas-Ascend/*
+    render_scope: tea-d8ghr467r5hc73b6jst0/*
+    vercel_scope: team_DsWa4h5JsUMelhlqijg1wPx3/*
+    neon_scope: org-sweet-king-59984504/*
+    identity_rule: platform-native-id-plus-ga-canonical-id
+    proof_required: true
+  platforms:
+    - canonical_id: ga://platform/github
+      provider: github
+      account: Atlas-Ascend
+      discovery: all-accessible-repositories
+      node_pattern: ga://repo/{repository_name}
+      status: discovered
+    - canonical_id: ga://platform/render
+      provider: render
+      workspace_id: tea-d8ghr467r5hc73b6jst0
+      discovery: all-services
+      node_pattern: ga://node/render/{service_name}
+      status: discovered
+    - canonical_id: ga://platform/vercel
+      provider: vercel
+      team_id: team_DsWa4h5JsUMelhlqijg1wPx3
+      discovery: all-projects
+      node_pattern: ga://node/vercel/{project_name}
+      status: discovered
+    - canonical_id: ga://platform/neon
+      provider: neon
+      organization_id: org-sweet-king-59984504
+      discovery: all-projects
+      node_pattern: ga://node/neon/{project_name}
+      status: discovered
+  vercel_projects:
+    - {id: prj_EuWbkrHySWiXMJhS9pfNZAK4cWr8, name: ark-omega-command-center}
+    - {id: prj_uv7Ctr76D4swlTE6ifkFAoPkoccM, name: ghost-atlas-hq-runtime}
+    - {id: prj_GY2t03fXB2J0BJd4kqO1eGv7CVWJ, name: atlas-assistant-install}
+    - {id: prj_rBXC5azqkr8GrUf9Gre9fPwM8bIx, name: crowngrid-command-center}
+    - {id: prj_QtjTMT06TzXuSMhJwCNP77R8EF2u, name: serverforge-prime-operations-cockpit}
+    - {id: prj_O5l33sAxMXAsH8Rz1Og1XoGpcSMO, name: audience-forge-hq08}
+    - {id: prj_0xRX168obhvBOZwIpk8YawguXMkB, name: nextjs-ai-chatbot, github: Atlas-Ascend/nextjs-ai-chatbot}
+    - {id: prj_TrqmGYGT89fKvxQvcrkRtLM4OC09, name: nextjs, github: Atlas-Ascend/nextjs}
+    - {id: prj_3t4HovP6nMVnvfyV01M5aPs3ZbYm, name: nextjs-husq, github: Atlas-Ascend/nextjs}
+    - {id: prj_z5Wx2o1veoXLvLAudpkJsEyZQNvw, name: nextjs-boilerplate-gfhn, github: Atlas-Ascend/nextjs-boilerplate}
+    - {id: prj_m8Kniorub0LcQaSkhKsf3WYHkl1f, name: nextjs-boilerplate, github: Atlas-Ascend/nextjs-boilerplate}
+    - {id: prj_YJO7p0tygJq98PTHvBb2YQ2O3rAI, name: ghost-atlas-machine-wake-observatory}
+    - {id: prj_ApuONH1ydJOTJ4XeLdd1XXNSSEmY, name: ghost-atlas-live-build-showcase}
+    - {id: prj_WDiOpodjyuVBzb5yQM6AVVN7GbXB, name: ghost-atlas-enterprise-bootstrap}
+    - {id: prj_lUGtdyRp7slGUOLArwAkmZNeD0eP, name: ga-live-003-shape-test}
+    - {id: prj_YYnA7y3rXbuEtbDPBqGA95aijT0R, name: atlas-mind-live-surface}
+    - {id: prj_YN8Sn0XK8kK0tCv2iubknxlUNaFh, name: ghost-atlas-cloud-continuity}
+    - {id: prj_LzVWK0T3Qux4iv6iPn9FiwkCXjT5, name: ghost-atlas-playnow}
+  neon_projects:
+    - {id: super-haze-61995362, name: VISHVARUPA Cloud Digital Twin, region: aws-us-west-2}
+    - {id: billowing-moon-84254590, name: ghost-atlas-estate-registry, region: aws-us-east-2}
+    - {id: lingering-wave-63147168, name: ghost-atlas-trifinity, region: aws-us-east-2}
+    - {id: blue-silence-13723131, name: atlas-mind-commercial, region: aws-us-east-2}
+    - {id: ancient-mud-00515851, name: atlas-mind-command-center, region: aws-us-east-1}
+  render_services:
+    - {id: srv-dagqtk7f3r2c73dpah60, name: ga-v1-janus-candidate, github: Atlas-Ascend/Janus-Prime}
+    - {id: srv-dagqef6pcuac73a797a0, name: vishvarupa-cybernetic-brain-gate, github: Atlas-Ascend/VISHVARUPA-Software-Hardware-Organism}
+    - {id: srv-dagq2ae1egvs73avn6jg, name: vulcan-agentic-engineering-foundry, github: Atlas-Ascend/VULCAN-Agentic-Engineering-Foundry}
+    - {id: srv-dagq0pafngtc73fkfts0, name: artemis-local-sovereign-ai, github: Atlas-Ascend/ARTEMIS-Local-Sovereign-AI}
+    - {id: srv-dagpvkafngtc73fkc780, name: hestia-hearth-agentic-control-plane, github: Atlas-Ascend/HESTIA-Hearth-Agentic-Control-Plane}
+    - {id: srv-dagputm7bikc73a9gtsg, name: heimdall-machine-governor, github: Atlas-Ascend/HEIMDALL-Machine-Governor}
+    - {id: srv-dagptk2fngtc73fk4gjg, name: athena-ai-infrastructure-command-plane, github: Atlas-Ascend/ATHENA-AI-Infrastructure-Command-Plane}
+    - {id: srv-dagps4qfngtc73fjv1gg, name: apollo-studio-operations-intelligence, github: Atlas-Ascend/APOLLO-Studio-Operations-Intelligence}
+    - {id: srv-dagpr37qj5pc73d480j0, name: hermes-public-access-relay, github: Atlas-Ascend/HERMES-Public-Access-Relay}
+    - {id: srv-dagpp8vqj5pc73d40ttg, name: argus-fieldvision-web, github: Atlas-Ascend/ARGUS-FieldVision}
+    - {id: srv-dagpp5ajnfac73dad22g, name: argus-fieldvision-api, github: Atlas-Ascend/ARGUS-FieldVision}
+    - {id: srv-dagpo7on74is739hltv0, name: ghost-atlas-map-of-reality, github: Atlas-Ascend/Ghost-Atlas-Map-of-Reality}
+    - {id: srv-dagpnogn74is739hjrs0, name: vishvarupa-organism, github: Atlas-Ascend/VISHVARUPA-Software-Hardware-Organism}
+    - {id: srv-dage08id0e5s73c3h6mg, name: maat-universal-casegraph, github: Atlas-Ascend/MAAT-Universal-CaseGraph}
+    - {id: srv-dagdq2p5efls73a4ofeg, name: janus-human-admin-zero, github: Atlas-Ascend/JANUS-Human-Admin-Zero}
+    - {id: srv-dafrm8v40ujc73clibqg, name: ghost-atlas-runtime-worker-qualification, github: Atlas-Ascend/EXECUTION-FABRIC-LIVE-OPERATIONS-THEATER}
+    - {id: srv-dafrm4u7bikc73dcf6t0, name: ghost-atlas-runtime-worker-factory, github: Atlas-Ascend/EXECUTION-FABRIC-LIVE-OPERATIONS-THEATER}
+    - {id: srv-dafrlve7bikc73dcejr0, name: ghost-atlas-runtime-worker-custodian, github: Atlas-Ascend/EXECUTION-FABRIC-LIVE-OPERATIONS-THEATER}
+    - {id: srv-dafrlnn40ujc73clfpp0, name: ghost-atlas-runtime-worker-core, github: Atlas-Ascend/EXECUTION-FABRIC-LIVE-OPERATIONS-THEATER}
+    - {id: srv-dafqo5tbedkc73fldk00, name: ghost-atlas-machine-wake-oidc-ingress, github: Atlas-Ascend/Ghost-Atlas-Machine-Wake-Resident-Control-Plane}
+    - {id: srv-dafq2jn40ujc73ce4tug, name: ghost-atlas-machine-wake, github: Atlas-Ascend/Ghost-Atlas-Machine-Wake-Resident-Control-Plane}
+    - {id: srv-dafnibv40ujc73c2o8qg, name: ghost-atlas-runtime-gateway, github: Atlas-Ascend/EXECUTION-FABRIC-LIVE-OPERATIONS-THEATER}
+    - {id: srv-dafni7dbedkc73a0tefg, name: janus-prime-runtime-authorization, github: Atlas-Ascend/Janus-Prime}
+    - {id: srv-dafml0lbedkc739tgjm0, name: Ghost-Atlas-OS, github: Atlas-Ascend/Ghost-Atlas-OS}
