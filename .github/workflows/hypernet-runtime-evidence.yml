@@ -1,0 +1,50 @@
+name: hypernet-runtime-evidence
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'global-resolution/runtime-evidence/**'
+      - 'global-resolution/cognitive-office-mesh/**'
+      - 'global-resolution/conformance/**'
+      - '.github/workflows/hypernet-runtime-evidence.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'global-resolution/runtime-evidence/**'
+      - 'global-resolution/cognitive-office-mesh/**'
+      - 'global-resolution/conformance/**'
+
+permissions:
+  contents: read
+
+jobs:
+  harvest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check pyyaml
+      - name: Harvest runtime evidence
+        env:
+          GA_HYPERNET_URL: ${{ secrets.GA_HYPERNET_URL }}
+          GA_HYPERNET_TOKEN: ${{ secrets.GA_HYPERNET_TOKEN }}
+          GA_ENABLE_SAFE_CANARY: 'false'
+        run: python global-resolution/runtime-evidence/harvest.py
+      - name: Runtime-aware certification
+        run: python global-resolution/runtime-evidence/certify_runtime.py
+      - name: Structural certification
+        run: python global-resolution/conformance/certify.py || true
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hypernet-runtime-evidence
+          if-no-files-found: error
+          path: |
+            global-resolution/runtime-evidence/runtime-evidence-report.json
+            global-resolution/runtime-evidence/runtime-evidence-receipt.json
+            global-resolution/runtime-evidence/runtime-certification-report.json
+            global-resolution/runtime-evidence/repair-targets.json
+            global-resolution/conformance/certification-report.json
