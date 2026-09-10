@@ -1,0 +1,38 @@
+schema_version: 1
+resolution_id: GA-HYPERNET-GLOBAL-RESOLUTION-008
+name: Cognitive Office Mesh
+mode: convergence
+source_registry:
+  provider: github-backend
+  expected_records: 82
+materialized:
+  chatbots: 82
+  agentic_roles: 82
+  offices: 82
+identity_grammar:
+  chatbot: ga://chatbot/{node_slug}
+  role: ga://role/{node_slug}
+  office: ga://office/{node_slug}
+  executive_chatbot: ga://chatbot/hypernet-executive
+  executive_role: ga://role/hypernet-executive
+  executive_office: ga://office/hypernet-executive
+ownership:
+  authority: ga://organ/janus-prime
+  atomic_work: ga://organ/packet-os
+  workforce: ga://organ/workforce-spine
+  router: ga://organ/crowngrid
+  transport: ga://organ/hypernet
+  memory: ga://organ/thoth
+  verification: [ga://organ/seca, ga://organ/devos]
+  proof: ga://organ/proofgrid
+  events: ga://organ/estate-event-gateway
+invariants:
+  - one source node maps to exactly one chatbot
+  - one source node maps to exactly one agentic role
+  - one source node maps to exactly one office
+  - each office owns its chatbot and role
+  - logical offices do not imply dedicated paid cloud infrastructure
+  - all execution is packetized and authority-gated
+  - arbitrary shell is forbidden
+  - completion requires SECA -> DevOS -> ProofGrid -> Thoth -> JANUS PRIME
+states: [REGISTERED, READY, BUSY, DEGRADED, STALE, DRIFTED, OFFLINE]
