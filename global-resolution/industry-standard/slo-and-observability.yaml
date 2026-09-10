@@ -1,0 +1,49 @@
+schema_version: 1
+resolution_id: GA-HYPERNET-GLOBAL-RESOLUTION-009
+observability:
+  tracing: OpenTelemetry-compatible
+  propagation: W3C Trace Context
+  logs: structured_json
+  metrics: prometheus_compatible
+  required_dimensions: [office_id, chatbot_id, role_id, capability, executor_id, provider, status]
+slis:
+  - request_success_rate
+  - dispatch_success_rate
+  - p50_latency_ms
+  - p95_latency_ms
+  - p99_latency_ms
+  - queue_wait_ms
+  - retry_rate
+  - dead_letter_rate
+  - executor_availability
+  - model_error_rate
+  - tool_error_rate
+  - proof_chain_completion_rate
+  - drift_reconciliation_rate
+slo_defaults:
+  api_availability_monthly: 99.9
+  successful_dispatch_percent: 99.0
+  proof_chain_completion_percent: 99.0
+  p95_interactive_latency_ms: 5000
+  p95_dispatch_accept_latency_ms: 500
+  stale_heartbeat_seconds: 120
+  offline_heartbeat_seconds: 300
+  error_budget_policy: freeze_nonessential_changes_on_exhaustion
+alerts:
+  page:
+    - resolver_unavailable
+    - authorization_bypass_detected
+    - proof_chain_bypass_detected
+    - queue_stalled
+    - production_secret_exposure
+  ticket:
+    - repeated_executor_failure
+    - high_retry_rate
+    - stale_node
+    - capability_drift
+    - model_quality_regression
+retention:
+  traces_days: 14
+  operational_logs_days: 30
+  audit_logs_days: 365
+  proof_receipts: durable

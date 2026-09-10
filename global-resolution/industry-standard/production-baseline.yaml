@@ -1,0 +1,103 @@
+schema_version: 1
+resolution_id: GA-HYPERNET-GLOBAL-RESOLUTION-009
+name: Industry Standard Production Baseline
+scope:
+  offices: 82
+  chatbots: 82
+  agent_roles: 82
+  backend_planes: [github-backend, vercel-backend, render-backend, neon-backend]
+principles:
+  - zero_trust_identity
+  - least_privilege
+  - typed_contracts
+  - idempotent_execution
+  - bounded_retries
+  - failure_isolation
+  - durable_audit
+  - observable_by_default
+  - human_authority_for_high_risk_actions
+  - registration_does_not_equal_runtime_proof
+identity_and_access:
+  workload_identity: required
+  operator_identity: required
+  rbac: required
+  capability_scoped_authorization: required
+  service_to_service_auth: signed_token_or_mtls
+  secret_storage: environment_or_managed_secret_store
+  secret_in_payload: forbidden
+api_contracts:
+  versioning: /v1
+  request_id: required
+  trace_id: required
+  idempotency_key: required_for_mutation
+  content_type: application/json
+  error_envelope: required
+  schema_validation: required
+execution:
+  queue_first_for_long_running_work: true
+  retries:
+    strategy: exponential_backoff_with_jitter
+    max_attempts: 5
+    retryable_classes: [timeout, transport, transient_dependency, rate_limit]
+  dead_letter_queue: required
+  timeout_required: true
+  cancellation: supported
+  concurrency_limits: required
+  circuit_breakers: required
+  bulkheads: required
+observability:
+  standard: OpenTelemetry-compatible
+  traces: required
+  metrics: required
+  structured_logs: required
+  correlation_fields: [request_id, trace_id, packet_id, office_id, chatbot_id, role_id, capability, executor_id]
+  slo_tracking: required
+  audit_events: append_only
+reliability:
+  liveness_probe: required
+  readiness_probe: required
+  dependency_health: required
+  graceful_shutdown: required
+  rolling_deploy_compatible: true
+  stateless_api_preferred: true
+  durable_state_externalized: true
+agentic_ai:
+  model_router: required
+  model_policy: cost_latency_quality_risk
+  tool_allowlist: required
+  tool_schema_validation: required
+  max_tool_hops: bounded
+  context_budget: bounded
+  prompt_versioning: required
+  eval_suite: required
+  regression_gate: required
+  human_review_classes: [destructive, privilege_escalation, production_secret, irreversible_external_action]
+data:
+  system_of_record: neon
+  migration_policy: forward_compatible
+  provenance: required
+  retention_policy: required
+  pii_classification: required
+  encryption_in_transit: required
+  encryption_at_rest: provider_managed_or_better
+software_supply_chain:
+  ci_required: true
+  unit_tests: required
+  integration_tests: required
+  contract_tests: required
+  lint: required
+  typecheck: required_where_applicable
+  dependency_scanning: required
+  secret_scanning: required
+  sbom: recommended
+  signed_release_provenance: recommended
+operations:
+  runbooks: required
+  incident_severity: [SEV0, SEV1, SEV2, SEV3]
+  change_receipt: required
+  rollback_strategy: required
+  drift_detection: required
+  reconciliation: bounded_non_destructive
+proof_chain:
+  order: [SECA, DevOS, ProofGrid, Thoth, JANUS_PRIME]
+  bypass: forbidden
