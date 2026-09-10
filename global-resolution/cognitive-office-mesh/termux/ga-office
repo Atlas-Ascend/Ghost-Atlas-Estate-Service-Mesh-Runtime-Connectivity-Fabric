@@ -1,0 +1,50 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -euo pipefail
+
+BASE_URL="${GA_HYPERNET_URL:-http://127.0.0.1:8000}"
+TOKEN="${GA_HYPERNET_TOKEN:-}"
+
+usage() {
+  echo "ga-office list | status <office> | ask <office> <intent...> | dispatch <office> <capability> <json> | sync | loop"
+}
+
+headers=(-H 'Content-Type: application/json')
+if [ -n "$TOKEN" ]; then headers+=(-H "Authorization: Bearer $TOKEN"); fi
+
+cmd="${1:-}"
+case "$cmd" in
+  list)
+    curl -fsS "${headers[@]}" "$BASE_URL/v1/offices"
+    ;;
+  status)
+    office="${2:?office id required}"
+    curl -fsS "${headers[@]}" "$BASE_URL/v1/offices/$office"
+    ;;
+  ask)
+    office="${2:?office id required}"; shift 2
+    intent="$*"
+    payload=$(python - "$office" "$intent" <<'PY'
+import json,sys,uuid
+print(json.dumps({"request_id":str(uuid.uuid4()),"office_id":sys.argv[1],"actor":"termux-operator","intent":sys.argv[2]}))
+PY
+)
+    curl -fsS "${headers[@]}" -X POST "$BASE_URL/v1/offices/invoke" -d "$payload"
+    ;;
+  dispatch)
+    office="${2:?office id required}"; capability="${3:?capability required}"; raw="${4:-{}}"
+    payload=$(python - "$office" "$capability" "$raw" <<'PY'
+import json,sys,uuid
+raw=json.loads(sys.argv[3])
+print(json.dumps({"request_id":str(uuid.uuid4()),"office_id":sys.argv[1],"actor":"termux-operator","intent":"bounded dispatch","capability":sys.argv[2],"input":raw}))
+PY
+)
+    curl -fsS "${headers[@]}" -X POST "$BASE_URL/v1/offices/invoke" -d "$payload"
+    ;;
+  sync)
+    curl -fsS "${headers[@]}" -X POST "$BASE_URL/v1/federation/sync" -d '{"scope":"cognitive-office-mesh"}'
+    ;;
+  loop)
+    curl -fsS "${headers[@]}" -X POST "$BASE_URL/v1/offices/closed-loop" -d '{"mode":"reconcile"}'
+    ;;
+  *) usage; exit 2 ;;
+esac
